@@ -8,7 +8,7 @@ from airflow.operators.docker_operator import (
 def create_producer_task() -> DockerOperator:
     return DockerOperator(
         # 設定這個 task 在 DAG 中的名稱（唯一識別碼）
-        task_id="DockerOperator",
+        task_id="producer_crawler_finmind_duplicate",
         image="linsamtw/tibame_crawler:0.0.6",
         command="pipenv run python crawler/producer_crawler_finmind_duplicate.py",
         # 每次執行前都強制重新拉取最新的 image（確保使用最新版本）
