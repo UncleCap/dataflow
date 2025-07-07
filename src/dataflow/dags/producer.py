@@ -10,15 +10,15 @@ from dataflow.constant import (
 )
 
 # 匯入自定義的 DockerOperator 任務建立函式
-from dataflow.etl.docker_operator import (
+from dataflow.etl.producer import (
     # 建立並回傳一個 DockerOperator 任務
-    create_docker_operator_task,
+    create_producer_task,
 )
 
 # 定義 DAG，並用 with 語法將任務放入 DAG 環境中
 with airflow.DAG(
     # DAG 的唯一名稱，用來識別 DAG
-    dag_id="DockerOperator",
+    dag_id="Producer",
     # 套用預設參數設定
     default_args=DEFAULT_ARGS,
     # 不自動排程，只能手動或外部觸發
@@ -29,4 +29,4 @@ with airflow.DAG(
     catchup=False,
 ) as dag:
     # 建立並註冊 DockerOperator 任務到 DAG
-    create_docker_operator_task()
+    create_producer_task()

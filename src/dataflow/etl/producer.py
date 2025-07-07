@@ -5,16 +5,17 @@ from airflow.operators.docker_operator import (
 
 
 # 建立一個 DockerOperator 任務的函式，回傳一個 Airflow 的任務實例
-def create_docker_operator_task() -> DockerOperator:
+def create_producer_task() -> DockerOperator:
     return DockerOperator(
         # 設定這個 task 在 DAG 中的名稱（唯一識別碼）
         task_id="DockerOperator",
-        # 指定要使用的 Docker 映像檔，例如 Ubuntu 20.04
-        image="ubuntu:20.04",
-        # 容器啟動後要執行的指令（這裡是輸出 hello world）
-        command="echo hello world",
+        image="linsamtw/tibame_crawler:0.0.6",
+        command="pipenv run python crawler/producer_crawler_finmind_duplicate.py",
         # 每次執行前都強制重新拉取最新的 image（確保使用最新版本）
         force_pull=True,
         # 容器執行完畢後自動刪除（避免堆積殘留容器）
         auto_remove=True,
+        # ✅ 指定容器要使用的 Docker network 名稱
+        # 注意：這要是 Docker Engine 中已存在的 network 名稱
+        network_mode="my_swarm_network",
     )
