@@ -29,14 +29,18 @@
 #### build docker image
 
     docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.1 .
+    docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.2 .
 
 #### push docker image
 
     docker push linsamtw/tibame_dataflow:0.0.1
+    docker push linsamtw/tibame_dataflow:0.0.2
 
 #### pull docker image
 
     docker pull linsamtw/tibame_dataflow:0.0.1
+    docker pull linsamtw/tibame_dataflow:0.0.2
 
 ## deploy-airflow:
 	DOCKER_IMAGE_VERSION=0.0.1 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
+	DOCKER_IMAGE_VERSION=0.0.2 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
