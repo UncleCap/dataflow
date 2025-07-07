@@ -59,6 +59,9 @@ services:
     restart: always
     environment:
       - TZ=Asia/Taipei
+    # 將容器內的 docker 與容器外的 docker 做連結
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
     deploy:
       mode: replicated
       replicas: 1
