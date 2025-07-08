@@ -37,6 +37,7 @@
     docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.4 .
     docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.4.arm64 .
     docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.5 .
+    docker build -f with.env.Dockerfile -t linsamtw/tibame_dataflow:0.0.5.arm64 .
 
 #### push docker image
 
@@ -49,6 +50,7 @@
     docker push linsamtw/tibame_dataflow:0.0.4
     docker push linsamtw/tibame_dataflow:0.0.4.arm64
     docker push linsamtw/tibame_dataflow:0.0.5
+    docker push linsamtw/tibame_dataflow:0.0.5.arm64
 
 #### pull docker image
 
@@ -65,3 +67,4 @@
 	DOCKER_IMAGE_VERSION=0.0.4 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
 	DOCKER_IMAGE_VERSION=0.0.4.arm64 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
 	DOCKER_IMAGE_VERSION=0.0.5 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
+	DOCKER_IMAGE_VERSION=0.0.5.arm64 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
