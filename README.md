@@ -71,3 +71,14 @@
 	DOCKER_IMAGE_VERSION=0.0.5 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
 	DOCKER_IMAGE_VERSION=0.0.5.arm64 docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
 	DOCKER_IMAGE_VERSION=0.0.6.gce docker stack deploy --with-registry-auth -c docker-compose-airflow.yml airflow
+
+## 調整筆電 gcloud project
+    gcloud config set project airflow-466005
+
+## 上傳程式碼到 Composer
+	gcloud composer \
+	environments storage \
+	dags import --environment airflow  \
+	--location us-central1 \
+	--source "src/dataflow" 
+
